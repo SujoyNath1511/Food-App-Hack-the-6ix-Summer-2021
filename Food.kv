@@ -1,13 +1,130 @@
 <ProfileAndSettingsPage>
     name: "profile and settings"
 
-    Label:
-        font_size: 20
-        text: "Profile and Settings"
+    name_label: name_label
+    name_input: name_input
+    preferences_label: preferences_label
+    timer_label: timer_label
+    timer_input: timer_input
+    page_selector_label: page_selector_label
+    to_recipe_adder: to_recipe_adder
+    to_recipe_follower: to_recipe_follower
+    to_credits: to_credits
+
+    FloatLayout:
+
+        ####################################################################################
+        # Name Label, Text Input and Edit Button
+        ####################################################################################
+        Label:
+            id: name_label              # The variable used to refer to the label
+            pos_hint: {"x": 0.05, "top": 1 - 0.05}      # Position of the Label
+            text_size: self.size        # The size of the text box
+            valign: 'center'               # Vertical Alignment
+            halign: 'left'              # Horizontal Alignment
+            font_size: 36
+            size_hint: 0.2, 0.1         # Size of text box
+            text: "Name: "
+
+        TextInput:
+            id: name_input
+            pos_hint: {"x": 0.18, "top": 1 - 0.055}
+            size_hint: 0.2, 0.1
+            multiline: False
+            font_size: 36
+            background_color: (0.2,0.2,0.2,1) if self.focus else (0,0,0,1)
+            foreground_color: (1,1,1,1)
+
+        ####################################################################################
+        # Preferences Label and tags.
+        ####################################################################################
+        Label:
+            id: preferences_label
+            pos_hint: {"x": 0.05, "top": 1 - 0.25}
+            text_size: self.size
+            valign: 'top'
+            halign: 'left'
+            size_hint: 0.5, 0.2
+            font_size: 36
+            text: "Preferences:"
+
+        ####################################################################################
+        # Timer Label and Text Input for Timer Duration
+        ####################################################################################
+        Label:
+            id: timer_label
+            size_hint: 0.2, 0.2
+            pos_hint: {"x": 0.05, "top": 0.5}
+            text_size: self.size
+            valign: 'top'
+            halign: 'left'
+            font_size: 36
+            text: "Timer: "
+
+        TextInput:
+            id: timer_input
+            pos_hint: {"x": 0.18, "top": 0.5}
+            size_hint: 0.2, 0.1
+            multiline: False
+            font_size: 36
+            background_color: (0.2,0.2,0.2,1) if self.focus else (0,0,0,1)
+            foreground_color: (1,1,1,1)
+            input_filter: 'int'
+
+        ####################################################################################
+        # Page Selector Label and Buttons
+        ####################################################################################
+        Label:
+            id: page_selector_label
+            size_hint: 0.5, 0.2
+            pos_hint: {"x": 0.05, "top": 0.3}
+            text_size: self.size
+            valign: 'top'
+            halign: 'left'
+            font_size: 36
+            text: "Select Page:"
+
+        Button:
+            id: to_recipe_adder
+            pos_hint: {"x": 0.025, "top": 0.2}
+            size_hint: 0.3, 0.15
+            text: "Recipe Adder"
+            font_size: 30
+            on_release:
+                root.move_to_recipe_adder()
+
+        Button:
+            id: to_recipe_follower
+            pos_hint: {"x": 0.35, "top": 0.2}
+            size_hint: 0.3, 0.15
+            text: "Recipe Follower"
+            font_size: 30
+            on_release:
+                root.move_to_recipe_follower()
+
+        Button:
+            id: to_credits
+            pos_hint: {"x": 0.675, "top": 0.2}
+            size_hint: 0.3, 0.15
+            text: "Credits"
+            font_size: 30
+            on_release:
+                root.move_to_credits()
 
 <RecipeAdderPage>
     name: "recipe adder"
+
+    Label:
+        text: "Recipe Adder"
+
 <RecipeFollowerPage>
     name: "recipe follower"
+
+    Label:
+        text: "Recipe Follower"
+
 <CreditsPage>
     name: "credits"
+
+    Label:
+        text: "Credits"

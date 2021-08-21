@@ -9,6 +9,7 @@ if __name__ == '__main__':
     pages = [ProfileAndSettingsPage(), RecipeAdderPage(), RecipeFollowerPage(), CreditsPage()]
     for page in pages:
         page_manager.add_widget(page)
+        page.add_page_manager(page_manager)
 
     # TODO Fill this up.
     page_manager.current = 'profile and settings'

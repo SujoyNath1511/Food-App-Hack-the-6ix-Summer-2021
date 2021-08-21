@@ -5,30 +5,13 @@ This is the main file to be used for window management and using kivy.
 # The following are imports used for kivy
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
+from kivy.config import Config
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
-
-
-class ProfileAndSettingsPage(Screen):
-    """This is the Profile and Settings Page."""
-    pass
-
-
-class RecipeAdderPage(Screen):
-    """The Page for adding recipes."""
-    pass
-
-
-class RecipeFollowerPage(Screen):
-    """The Recipe Follower Page."""
-    pass
-
-
-class CreditsPage(Screen):
-    """Page used to display credits and citations."""
-    pass
+Config.set('graphics', 'resizable', False)
 
 
 class PageManager(ScreenManager):
@@ -36,6 +19,65 @@ class PageManager(ScreenManager):
     different pages in the app.
     """
     pass
+
+
+class ProfileAndSettingsPage(Screen):
+    """This is the Profile and Settings Page."""
+    page_manager: PageManager
+
+    # Global Class Variables required for kivy.
+    name_label = ObjectProperty(None)
+    name_input = ObjectProperty(None)
+    preferences_label = ObjectProperty(None)
+    timer_label = ObjectProperty(None)
+    timer_input = ObjectProperty(None)
+    page_selector_label = ObjectProperty(None)
+    to_recipe_adder = ObjectProperty(None)
+    to_recipe_follower = ObjectProperty(None)
+    to_credits = ObjectProperty(None)
+
+    def add_page_manager(self, page_manager: PageManager):
+        """Adds a Page Manager."""
+        self.page_manager = page_manager
+
+    def move_to_recipe_adder(self) -> None:
+        """Changes the window to Recipe Adder."""
+        self.page_manager.current = "recipe adder"
+
+    def move_to_recipe_follower(self) -> None:
+        """Changes the window to Recipe Adder."""
+        self.page_manager.current = "recipe follower"
+
+    def move_to_credits(self) -> None:
+        """Changes the window to Recipe Adder."""
+        self.page_manager.current = "credits"
+
+
+class RecipeAdderPage(Screen):
+    """The Page for adding recipes."""
+    page_manager: PageManager
+
+    def add_page_manager(self, page_manager: PageManager):
+        """Adds a Page Manager."""
+        self.page_manager = page_manager
+
+
+class RecipeFollowerPage(Screen):
+    """The Recipe Follower Page."""
+    page_manager: PageManager
+
+    def add_page_manager(self, page_manager: PageManager):
+        """Adds a Page Manager."""
+        self.page_manager = page_manager
+
+
+class CreditsPage(Screen):
+    """Page used to display credits and citations."""
+    page_manager: PageManager
+
+    def add_page_manager(self, page_manager: PageManager):
+        """Adds a Page Manager."""
+        self.page_manager = page_manager
 
 
 class FoodApp(App):
