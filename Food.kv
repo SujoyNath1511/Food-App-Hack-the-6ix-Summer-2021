@@ -168,9 +168,26 @@
 
 <RecipeFollowerPage>
     name: "recipe follower"
+    BoxLayout:
+        orientation: "horizontal"
 
-    Label:
-        text: "Recipe Follower"
+        TabbedPanel:
+            do_default_tab: False
+
+            TabbedPanelItem:
+                text: "Step 1"
+                Label:
+                    text: "Content of First Panel"
+
+            TabbedPanelItem:
+                text: "Step 2"
+                Label:
+                    text: "Content of Second Panel"
+            TabbedPanelItem:
+                text: "Step 3"
+                Label:
+                    text: "Content of Third Panel"
+
 
 <CreditsPage>
     name: "credits"
