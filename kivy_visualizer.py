@@ -10,7 +10,9 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.config import Config
 from kivy.uix.popup import Popup
+from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
 Config.set('graphics', 'resizable', False)
 
 
@@ -60,6 +62,15 @@ class RecipeAdderPage(Screen):
     def add_page_manager(self, page_manager: PageManager):
         """Adds a Page Manager."""
         self.page_manager = page_manager
+
+    def add_ing(self) -> None:
+        """Add an ingredient."""
+        self.ids.gd1.add_widget(TextInput(multiline=False, size_hint_y=None))
+        self.ids.gd1.add_widget(TextInput(multiline=False, size_hint_y=None))
+        self.ids.gd1.add_widget(Label(text='', size_hint_y=None))
+        # btn = Button(text='Add Ingredient', size_hint_y=None)
+        # btn.bind(on_press=self.add_ing)
+        # self.ids.gd1.add_widget(btn)
 
 
 class RecipeFollowerPage(Screen):
