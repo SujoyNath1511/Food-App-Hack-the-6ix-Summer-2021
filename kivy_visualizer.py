@@ -89,6 +89,20 @@ class RecipeFollowerPage(Screen):
         """Adds a Page Manager."""
         self.page_manager = page_manager
 
+    def on_start(self) -> None:
+        """Starts the timer and updates it"""
+        Clock.schedule_interval(self.update_label, 1)
+        Clock.schedule_once(self.stop_interval(), 5)
+
+    def stop_interval(self):
+        """Stops the timer"""
+        self.function_interval.cancel()
+
+    def update_label(self) -> None:
+        """Updates the timer so that it goes down"""
+        self.root.ids.counter.text = str(int(self.root.ids.counter.text) + 1)
+
+
 
 class CreditsPage(Screen):
     """Page used to display credits and citations."""
