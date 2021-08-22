@@ -114,57 +114,57 @@
 <RecipeAdderPage>
     name: "recipe adder"
 
-    ScrollView:
-        do_scroll_x: False
-        do_scroll_y: True
-        size_hint: (1, None)
-        size: (root.width, root.height)
+    FloatLayout:
+        cols:1
 
-        GridLayout:
-            cols: 3
-            size_hint_y: None       # For vertical scrolling purposes
-            id: gd1                 # Used for dynamically adding widgets using Python
-            height: self.minimum_height     # For vertical scrolling purposes
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            size_hint: (1, None)
+            size: (root.width, root.height)
 
-            Label:
-                text: ""
-                size_hint_y: None
+            GridLayout:
+                cols: 3
+                size_hint_y: None       # For vertical scrolling purposes
+                id: gd1                 # Used for dynamically adding widgets using Python
+                height: self.minimum_height     # For vertical scrolling purposes
 
-            Label:
-                text: "Ingredients List"
-                font_size: 30
-                text_size: self.size
-                size_hint_y: None
+                Label:
+                    text: "Recipe Adder"
+                    font_size: 30
+                    text_size: self.size
+                    size_hint_y: None
 
-            Label:
-                text: ""
-                size_hint_y: None
+                Label:
+                    text: ""
+                    size_hint_y: None
 
-            Label:
-                text: "Amount"
-                size_hint_y: None
+                Button:
+                    text: "Add Ingredient/Instruction"
+                    on_release:
+                        root.add_ing()
+                    size_hint_y: None
 
-            Label:
-                text: "Name"
-                size_hint_y: None
+                Label:
+                    text: "Ingredient or "
+                    font_size: 25
+                    size_hint_y: None
 
-            Label:
-                text: ""
-                size_hint_y: None
+                Label:
+                    text: "Instruction"
+                    font_size: 25
+                    size_hint_y: None
 
-            TextInput:
-                multiline:False
-                size_hint_y: None
+                Label:
+                    text: ""
+                    size_hint_y: None
 
-            TextInput:
-                multiline:False
-                size_hint_y: None
-
-            Button:
-                text: "Add Ingredient"
-                on_release:
-                    root.add_ing()
-                size_hint_y: None
+        Button:
+            text: "Complete Recipe"
+            pos_hint: {"right": 1, "y": 0}
+            size: (210, 90)
+            size_hint: None, None
+            font_size: 25
 
 <RecipeFollowerPage>
     name: "recipe follower"

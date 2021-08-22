@@ -65,13 +65,21 @@ class RecipeAdderPage(Screen):
 
     def add_ing(self) -> None:
         """Add an ingredient."""
+        btn_ingr = Button(text='Ingredient', size_hint_y=None)
+        btn_inst = Button(text='Instruction', size_hint_y=None)
+        btn_inst.bind(on_release=self.is_ingredient)
+        btn_ingr.bind(on_release=self.is_instruction)
+        self.ids.gd1.add_widget(btn_inst)
+        self.ids.gd1.add_widget(btn_ingr)
         self.ids.gd1.add_widget(TextInput(multiline=False, size_hint_y=None))
-        self.ids.gd1.add_widget(TextInput(multiline=False, size_hint_y=None))
-        self.ids.gd1.add_widget(Label(text='', size_hint_y=None))
-        # btn = Button(text='Add Ingredient', size_hint_y=None)
-        # btn.bind(on_press=self.add_ing)
-        # self.ids.gd1.add_widget(btn)
 
+    def is_ingredient(self, verdict: bool):
+        """Creates a new Ingredient Object."""
+        pass
+
+    def is_instruction(self, verdict: bool):
+        """Creates a new Instruction object"""
+        pass
 
 class RecipeFollowerPage(Screen):
     """The Recipe Follower Page."""
